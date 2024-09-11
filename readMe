@@ -1,0 +1,12 @@
+# CC=gcc
+# CFLAGS=-I.
+
+# hellomake:
+# 	$(CC) -o task1_test task1_test.c
+# 	$(CC) -o dbl_vector dbl_vector.c
+
+
+#To compile task_1 code:
+gcc -o task1_test task1_test.c dbl_vector.c
+
+./task1_test
