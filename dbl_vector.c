@@ -40,23 +40,38 @@ void dv_destroy( dbl_vector_t* vec ) {
 
 void dv_copy( dbl_vector_t* vec, dbl_vector_t* dest ) {
     // INSERT SOLUTION HERE
+    dv_ensure_capacity(dest, vec->size);
+    for (size_t i = 0; i < vec->size; i++) {
+        dest->data[i] = vec->data[i];
+    }
+    dest->size = vec->size;
 }
 
 void dv_clear( dbl_vector_t* vec ) {
     // INSERT SOLUTION HERE
+    vec->size = 0;
 }
 
 void dv_push( dbl_vector_t* vec, double new_item ) {
     // INSERT SOLUTION HERE
+    dv_ensure_capacity(vec, vec->size + 1);
+    vec->data[vec->size] = new_item;
+    vec->size++;
 }
 
 void dv_pop( dbl_vector_t* vec ) {
     // INSERT SOLUTION HERE
+    if (vec->size > 0) {
+        vec->size--;
+    }
 }
 
 double dv_last( dbl_vector_t* vec ) {
     double result = NAN;
     // INSERT SOLUTION HERE
+    if (vec->size > 0) {
+        return vec->data[vec->size - 1];
+    }
     return result;
 }
 
