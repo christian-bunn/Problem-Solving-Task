@@ -77,12 +77,30 @@ double dv_last( dbl_vector_t* vec ) {
 
 void dv_insert_at( dbl_vector_t* vec, size_t pos, double new_item ) {
     // INSERT SOLUTION HERE
+    dv_ensure_capacity(vec, vec->size + 1);
+    if (pos > vec->size) {
+        pos = vec->size;
+    }
+    for (size_t i = vec->size; i > pos; i--) {
+        vec->data[i] = vec->data[i - 1];
+    }
+    vec->data[pos] = new_item;
+    vec->size++;
 }
 
 void dv_remove_at( dbl_vector_t* vec, size_t pos ) {
     // INSERT SOLUTION HERE
+    if (pos < vec->size) {
+        for (size_t i = pos; i < vec->size - 1; i++) {
+            vec->data[i] = vec->data[i +1];
+        }
+        vec->size--;
+    }
 }
 
 void dv_foreach( dbl_vector_t* vec, void (*callback)(double, void*), void* info ) {
     // INSERT SOLUTION HERE
+    for (size_t i = 0; i < vec->size; i++) {
+        callback(vec->data[i], info);
+    }
 }
