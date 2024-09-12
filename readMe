@@ -10,13 +10,3 @@
 gcc -o task1_test task1_test.c dbl_vector.c
 
 ./task1_test
-
-
-
-# git instructions:
-git init
-git add .
-git commit -m "Initial commit"
-git branch -M main
-git remote add origin https://github.com/christian-bunn/Problem-Solving-Task.git
-git push -u origin main
